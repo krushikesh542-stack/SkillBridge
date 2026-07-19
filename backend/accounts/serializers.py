@@ -48,3 +48,17 @@ class RegisterSerializer(serializers.ModelSerializer):
             role=validated_data["role"],
             password=validated_data["password"],
         )
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "role",
+        )
+        read_only_fields = fields
