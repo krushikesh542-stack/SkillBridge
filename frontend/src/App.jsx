@@ -1,74 +1,124 @@
-import { ArrowRight, BriefcaseBusiness, Rocket, Users } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
 import "./App.css";
 
 function App() {
-  const features = [
-    {
-      icon: <Users size={28} />,
-      title: "Discover Talent",
-      description:
-        "Startups can discover students and freshers through verified skills and real projects.",
-    },
-    {
-      icon: <Rocket size={28} />,
-      title: "Join Startups",
-      description:
-        "Students can find internships, micro-projects and early-stage startup opportunities.",
-    },
-    {
-      icon: <BriefcaseBusiness size={28} />,
-      title: "Build Experience",
-      description:
-        "Complete meaningful work, receive feedback and strengthen your professional profile.",
-    },
-  ];
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [message, setMessage] = useState("");
+  const [user, setUser] = useState(null);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setMessage("");
+
+    try {
+      const loginResponse = await axios.post(
+        "http://127.0.0.1:8001/api/auth/login/",
+        formData
+      );
+
+      const accessToken = loginResponse.data.access;
+      const refreshToken = loginResponse.data.refresh;
+
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+
+      const userResponse = await axios.get(
+        "http://127.0.0.1:8001/api/auth/me/",
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      setUser(userResponse.data);
+      setMessage("Login successful.");
+    } catch (error) {
+      console.error(error);
+
+      setUser(null);
+      setMessage(
+        error.response?.data?.detail ||
+          "Login failed. Please check your email and password."
+      );
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setUser(null);
+    setMessage("You have logged out.");
+  };
 
   return (
-    <main>
-      <nav className="navbar">
-        <div className="logo">
-          Skill<span>Bridge</span>
-        </div>
-
-        <div className="nav-actions">
-          <button className="login-button">Log in</button>
-          <button className="primary-button">Join SkillBridge</button>
-        </div>
-      </nav>
-
-      <section className="hero">
-        <div className="hero-badge">Connecting talent with startups</div>
-
-        <h1>
-          Where ambitious students meet
-          <span> growing startups.</span>
-        </h1>
-
-        <p>
-          Discover micro-internships, startup projects and mentorship
-          opportunities based on your skills—not only your experience.
+    <main className="page">
+      <section className="login-card">
+        <h1>SkillBridge</h1>
+        <p className="subtitle">
+          Connect with students, startups, and mentors.
         </p>
 
-        <div className="hero-actions">
-          <button className="primary-button large-button">
-            Explore opportunities
-            <ArrowRight size={18} />
-          </button>
+        {!user ? (
+          <form onSubmit={handleLogin}>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="teststudent3@example.com"
+              required
+            />
 
-          <button className="secondary-button large-button">
-            Find startup talent
-          </button>
-        </div>
-      </section>
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              required
+            />
 
-      <section className="features">
-        {features.map((feature) => (
-          <article className="feature-card" key={feature.title}>
-            <div className="feature-icon">{feature.icon}</div>
-            <h2>{feature.title}</h2>
-            <p>{feature.description}</p>
-          </article>
-        ))}
+            <button type="submit">Login</button>
+          </form>
+        ) : (
+          <div className="user-card">
+            <h2>Welcome, {user.first_name || user.username}</h2>
+            <p>
+              <strong>Email:</strong> {user.email}
+            </p>
+            <p>
+              <strong>Username:</strong> {user.username}
+            </p>
+            <p>
+              <strong>Role:</strong> {user.role}
+            </p>
+
+            <button type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        )}
+
+        {message && <p className="message">{message}</p>}
       </section>
     </main>
   );
