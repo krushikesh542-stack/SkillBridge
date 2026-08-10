@@ -1,0 +1,250 @@
+/* Profile page styling – based on CreateOpportunity styles */
+.profile-page {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+/* Phase 2 warm-neutral profile editor */
+.profile-header .eyebrow { color: var(--brand-taupe); }
+.profile-header h1, .form-card-heading h2, .form-group label { color: var(--brand-charcoal); }
+.profile-header p, .form-card-heading p { color: var(--color-text-soft); }
+.profile-form .form-card { border-color: var(--border-color); background: var(--surface-card); box-shadow: var(--shadow-md); backdrop-filter: blur(14px); }
+.form-card-heading { color: var(--brand-sand); }
+.profile-form .form-group input, .profile-form .form-group select, .profile-form .form-group textarea, .profile-form .skill-input-row input { color: var(--brand-charcoal); border-color: var(--border-color); background: rgba(255,255,255,.64); }
+.profile-form .form-group input:focus, .profile-form .form-group select:focus, .profile-form .form-group textarea:focus, .profile-form .skill-input-row input:focus { border-color: var(--brand-sand); background: rgba(255,255,255,.9); box-shadow: 0 0 0 4px rgba(168,138,107,.12); }
+.profile-form input[type="file"] { padding: 10px; background: rgba(246,242,237,.72); }
+.profile-form input[type="file"]::file-selector-button { margin-right: 12px; padding: 8px 12px; color: var(--brand-charcoal); border: 1px solid var(--border-color); border-radius: 9px; background: rgba(205,183,158,.25); cursor: pointer; }
+.profile-form input[type="checkbox"] { width: 22px; min-height: 22px; accent-color: var(--brand-sage); }
+.add-skill-button, .publish-opportunity-button { color: var(--brand-cream); background: var(--brand-sand); box-shadow: 0 10px 22px rgba(47,45,42,.16); }
+.add-skill-button:hover, .publish-opportunity-button:hover { background: var(--brand-taupe); box-shadow: 0 14px 28px rgba(47,45,42,.22); }
+.selected-skill { color: var(--brand-charcoal); background: rgba(205,183,158,.23); border: 1px solid var(--border-color); border-radius: 999px; }
+.selected-skill button { color: var(--brand-taupe); background: transparent; cursor: pointer; }
+.cancel-create-button { color: var(--brand-charcoal); border: 1px solid var(--border-color); background: rgba(255,255,255,.58); }
+.view-resume-button { color: var(--brand-charcoal); border: 1px solid rgba(163,177,138,.52); background: rgba(163,177,138,.2); }
+.view-resume-button:hover { background: rgba(163,177,138,.32); }
+.create-form-message.success { color: #49613f; }
+
+.profile-header {
+  margin-bottom: 28px;
+}
+
+.profile-header .eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #5f69ea;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.profile-header h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 34px;
+  letter-spacing: -1px;
+}
+
+.profile-header p {
+  max-width: 680px;
+  margin-top: 10px;
+  color: #6f788a;
+  line-height: 1.7;
+}
+
+.profile-form .form-card {
+  padding: 28px;
+  border: 1px solid rgba(215, 222, 234, 0.95);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 18px 45px rgba(44, 58, 110, 0.07);
+  backdrop-filter: blur(14px);
+  margin-bottom: 24px;
+}
+
+.form-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #5d67ee;
+}
+
+.form-card-heading h2 {
+  margin: 0;
+  color: #172033;
+  font-size: 21px;
+}
+
+.form-card-heading p {
+  margin-top: 5px;
+  color: #7a8497;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 700px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-page {
+    padding: 20px 16px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: #364153;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea,
+.skill-input-row input {
+  width: 100%;
+  color: #172033;
+  border: 1px solid #dbe2ec;
+  border-radius: 12px;
+  background: #fbfcfe;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  min-height: 48px;
+  padding: 12px 14px;
+}
+
+.form-group textarea {
+  min-height: 180px;
+  padding: 14px;
+  line-height: 1.7;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.skill-input-row input:focus {
+  border-color: #6973ff;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(86, 97, 255, 0.1);
+}
+
+.skill-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.add-skill-button {
+  min-height: 48px;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  border-radius: 12px;
+  background: #5d67ee;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-skill-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(93, 103, 238, 0.25);
+}
+
+.selected-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.selected-skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f4ff;
+  color: #172033;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.create-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cancel-create-button,
+.publish-opportunity-button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-create-button {
+  background: #e0e4eb;
+  color: #333;
+}
+
+.publish-opportunity-button {
+  background: #5d67ee;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* View Resume button styling */
+.view-resume-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #f0f4ff;
+  color: #172033;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 8px;
+}
+.view-resume-button:hover {
+  background: #e0e7ff;
+}
+
+.create-form-message {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.create-form-message.success {
+  color: #0f9d58;
+}
+
+.create-form-message.error {
+  color: #d9534f;
+}

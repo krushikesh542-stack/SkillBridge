@@ -1,0 +1,37 @@
+.opportunity-details-page { width: 100%; color: var(--text-primary); }
+.opportunity-details-layout.no-apply { grid-template-columns: 1fr; }
+.back-link { color: var(--brand-taupe); }
+.back-link:hover { color: var(--brand-charcoal); }
+.opportunity-hero, .details-section, .apply-panel { border-color: var(--border-color); background: var(--surface-card); box-shadow: var(--shadow-md); backdrop-filter: blur(16px); }
+.opportunity-hero { border-radius: var(--radius-xl); }
+.opportunity-hero h1, .details-section h2, .apply-panel h2 { color: var(--brand-charcoal); }
+.details-company, .details-section p, .apply-panel p { color: var(--color-text-soft); }
+.opportunity-details-page .opportunity-type { color: var(--brand-charcoal); background: rgba(205,183,158,.28); }
+.opportunity-details-page .work-mode { color: var(--brand-charcoal); background: rgba(163,177,138,.25); }
+.details-section, .apply-panel { border-radius: var(--radius-lg); }
+.details-grid div { background: rgba(246,242,237,.72); border: 1px solid var(--border-color); }
+.details-grid span, .posted-by span { color: var(--text-muted); }
+.details-grid strong, .posted-by strong { color: var(--brand-charcoal); }
+.opportunity-details-page .skill-tag { color: var(--brand-charcoal); background: rgba(205,183,158,.2); border: 1px solid var(--border-color); }
+.apply-panel .apply-button { color: var(--brand-cream); background: var(--brand-sand); box-shadow: 0 10px 24px rgba(47,45,42,.18); }
+.apply-panel .apply-button:hover:not(:disabled) { background: var(--brand-taupe); box-shadow: 0 14px 28px rgba(47,45,42,.24); }
+.apply-panel .apply-button.already-applied { color: var(--brand-charcoal); background: var(--brand-sage); box-shadow: none; }
+.view-applications-link { color: var(--brand-charcoal); background: rgba(163,177,138,.22); border-color: rgba(163,177,138,.6); }
+.view-applications-link:hover { background: rgba(163,177,138,.34); }
+.posted-by { border-top-color: var(--border-color); }
+.application-message.success { color: #49613f; background: rgba(163,177,138,.2); }
+.application-message.error { color: var(--color-danger); background: rgba(220,38,38,.07); }
+
+.application-confirmation { margin-top: 18px; display: grid; gap: 8px; }
+.application-confirmation label { color: var(--brand-charcoal); font-size: 13px; font-weight: 700; }
+.application-confirmation label > span, .application-confirmation label > small { color: var(--brand-taupe); font-weight: 600; }
+.application-confirmation input:not([type="checkbox"]) { width: 100%; min-height: 44px; padding: 10px 12px; color: var(--brand-charcoal); border: 1px solid var(--border-color); border-radius: 11px; background: rgba(255,255,255,.66); outline: none; }
+.application-confirmation input:not([type="checkbox"]):focus { border-color: var(--brand-sand); box-shadow: 0 0 0 4px rgba(168,138,107,.12); }
+.application-sharing-notice, .no-profile-resume { margin: 0 0 6px; padding: 11px 12px; border: 1px solid rgba(205,183,158,.4); border-radius: 11px; background: rgba(205,183,158,.14); font-size: 12px; line-height: 1.5; }
+.profile-resume-choice { margin-top: 6px; padding: 11px 12px; display: flex; align-items: center; gap: 9px; border: 1px solid rgba(163,177,138,.5); border-radius: 11px; background: rgba(163,177,138,.16); cursor: pointer; }
+.profile-resume-choice input { width: 18px; height: 18px; accent-color: var(--brand-sage); }
+.application-confirmation-actions { margin-top: 8px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 9px; }
+.application-confirmation-actions button { min-height: 42px; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 11px; color: var(--brand-charcoal); background: rgba(255,255,255,.62); cursor: pointer; font-weight: 700; }
+.application-confirmation-actions button[type="submit"] { color: var(--brand-cream); border-color: transparent; background: var(--brand-sand); }
+.application-confirmation-actions button:disabled { cursor: not-allowed; opacity: .6; }
+@media (max-width: 600px) { .opportunity-details-page { padding: 20px 0; } }

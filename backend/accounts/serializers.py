@@ -62,3 +62,15 @@ class UserSerializer(serializers.ModelSerializer):
             "role",
         )
         read_only_fields = fields
+
+class ChangePasswordSerializer(serializers.Serializer):
+    current_password = serializers.CharField(write_only=True, style={"input_type": "password"})
+    new_password = serializers.CharField(write_only=True, style={"input_type": "password"})
+    confirm_new_password = serializers.CharField(write_only=True, style={"input_type": "password"})
+
+    def validate(self, data):
+        if data["new_password"] != data["confirm_new_password"]:
+            raise serializers.ValidationError({"confirm_new_password": "Passwords do not match."})
+        # Use Django's password validators
+        validate_password(data["new_password"])
+        return data

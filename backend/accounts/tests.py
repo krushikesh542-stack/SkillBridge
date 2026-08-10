@@ -1,3 +1,10 @@
-from django.test import TestCase
+from django.urls import reverse
+from rest_framework import status
+from rest_framework.test import APITestCase
 
-# Create your tests here.
+
+class HealthCheckTests(APITestCase):
+    def test_health_endpoint_is_public(self):
+        response = self.client.get(reverse("health-check"))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["status"], "success")

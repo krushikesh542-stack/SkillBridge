@@ -1,0 +1,54 @@
+:root {
+  /* Existing palette */
+  --color-primary: #7A6E5D;
+  --color-primary-dark: #2F2D2A;
+  --color-primary-light: #F1EAE2;
+
+  --color-secondary: #A88A6B;
+
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  --color-text: #2F2D2A;
+  --color-text-soft: #6F675C;
+  --color-text-muted: #8A8175;
+
+  --color-background: #F6F2ED;
+  --color-surface: rgba(255, 255, 255, 0.92);
+  --color-surface-solid: #ffffff;
+
+  --color-border: rgba(122, 110, 93, 0.18);
+  --color-border-strong: rgba(122, 110, 93, 0.3);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+
+  --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 14px 34px rgba(30, 41, 59, 0.08);
+  --shadow-lg: 0 24px 60px rgba(30, 41, 59, 0.12);
+
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s ease;
+
+  /* Warm‑neutral branding tokens */
+  --brand-charcoal: #2F2D2A;
+  --brand-taupe:   #7A6E5D;
+  --brand-sand:    #A88A6B;
+  --brand-beige:   #CDB79E;
+  --brand-sage:    #A3B18A;
+  --brand-cream:   #F6F2ED;
+
+  /* Derived surface & text tokens */
+  --surface-glass: rgba(255,255,255,0.72);
+  --surface-card: rgba(255,255,255,0.85);
+  --text-primary: var(--brand-charcoal);
+  --text-muted: #6b7280; /* keep accessible */
+  --border-radius: 12px;
+  --border-color: rgba(0,0,0,0.08);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.07);
+  --shadow-lg: 0 12px 36px rgba(0,0,0,0.09);
+}

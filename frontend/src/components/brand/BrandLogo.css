@@ -1,0 +1,54 @@
+.skillbridge-logo {
+  color: #2f2d2a;
+}
+
+.skillbridge-logo--icon {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.skillbridge-symbol {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.skillbridge-logo--full {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.skillbridge-logo--full .skillbridge-symbol {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+}
+
+.skillbridge-wordmark {
+  color: #2f2d2a;
+  font-size: 31px;
+  font-weight: 800;
+  letter-spacing: -1.1px;
+  line-height: 1;
+}
+
+.skillbridge-wordmark > span {
+  color: #a88a6b;
+}
+
+@media (max-width: 520px) {
+  .skillbridge-logo--full .skillbridge-symbol {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+  }
+
+  .skillbridge-wordmark {
+    font-size: 28px;
+  }
+}

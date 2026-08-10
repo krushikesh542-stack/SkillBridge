@@ -7,11 +7,6 @@ from .models import Opportunity
 
 
 class OpportunitySerializer(serializers.ModelSerializer):
-    created_by_email = serializers.EmailField(
-        source="created_by.email",
-        read_only=True,
-    )
-
     skills = SkillSerializer(many=True, read_only=True)
 
     skill_names = serializers.ListField(
@@ -24,7 +19,6 @@ class OpportunitySerializer(serializers.ModelSerializer):
         model = Opportunity
         fields = [
             "id",
-            "created_by_email",
             "title",
             "company_name",
             "description",
@@ -43,7 +37,6 @@ class OpportunitySerializer(serializers.ModelSerializer):
 
         read_only_fields = [
             "id",
-            "created_by_email",
             "created_at",
             "updated_at",
         ]

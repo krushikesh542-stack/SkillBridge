@@ -1,5 +1,23 @@
-from django.conf import settings
+from django.core.validators import FileExtensionValidator
+from django.core.exceptions import ValidationError
 from django.db import models
+from django.conf import settings
+import re
+
+def validate_resume_size(value):
+    max_mb = 5
+    if value.size > max_mb * 1024 * 1024:
+        raise ValidationError(f"Resume file size must not exceed {max_mb} MB.")
+
+
+def validate_whatsapp_number(value):
+    if not value:
+        return
+    if not re.fullmatch(r"\+?[0-9\s().-]+", value):
+        raise ValidationError("Enter a valid phone number using digits, +, spaces, parentheses, or hyphens.")
+    digit_count = sum(character.isdigit() for character in value)
+    if digit_count < 7 or digit_count > 15:
+        raise ValidationError("Enter a phone number containing between 7 and 15 digits.")
 
 
 class Skill(models.Model):
@@ -22,6 +40,11 @@ class StudentProfile(models.Model):
     degree = models.CharField(max_length=150, blank=True)
     graduation_year = models.PositiveIntegerField(null=True, blank=True)
     location = models.CharField(max_length=150, blank=True)
+    whatsapp_number = models.CharField(
+        max_length=32,
+        blank=True,
+        validators=[validate_whatsapp_number],
+    )
 
     github_url = models.URLField(blank=True)
     linkedin_url = models.URLField(blank=True)
@@ -39,12 +62,18 @@ class StudentProfile(models.Model):
         null=True,
     )
 
+    resume = models.FileField(
+        upload_to="student_resumes/",
+        blank=True,
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=['pdf']), validate_resume_size],
+        help_text="Upload your resume in PDF format (max 5 MB).",
+    )
+
     available_for_work = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return f"Student: {self.user.email}"
 
 
 class StartupProfile(models.Model):

@@ -1,0 +1,14 @@
+.auth-page { background: radial-gradient(circle at 18% 15%, rgba(205,183,158,.32), transparent 32%), radial-gradient(circle at 82% 85%, rgba(163,177,138,.2), transparent 30%), linear-gradient(135deg, var(--brand-charcoal), #4a443c); }
+.auth-card { border-color: rgba(246,242,237,.52); background: rgba(246,242,237,.88); box-shadow: 0 30px 80px rgba(47,45,42,.3); }
+.auth-brand { margin: 0 auto 16px; }
+.auth-card h1, .auth-card label { color: var(--brand-charcoal); }
+.auth-subtitle { color: var(--brand-taupe); }
+.auth-card input { color: var(--brand-charcoal); border-color: rgba(122,110,93,.24); background: rgba(255,255,255,.64); }
+.auth-card input:focus { border-color: var(--brand-sand); box-shadow: 0 0 0 4px rgba(168,138,107,.14); }
+.auth-card button { background: linear-gradient(135deg, var(--brand-taupe), var(--brand-charcoal)); box-shadow: 0 12px 25px rgba(47,45,42,.2); }
+.auth-card button:hover { box-shadow: 0 16px 32px rgba(47,45,42,.28); }
+.message { color: var(--color-danger); }
+
+@media (max-width: 520px) {
+  .auth-brand { margin-bottom: 14px; }
+}
