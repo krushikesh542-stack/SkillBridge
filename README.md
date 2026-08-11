@@ -12,6 +12,20 @@ SkillBridge is a full-stack web application for early-career talent and the peop
 
 Render services may take a short time to wake after a period of inactivity.
 
+## Application Preview
+
+| Login | Student Dashboard |
+| --- | --- |
+| ![SkillBridge login page](screenshots/login-page.png) | ![SkillBridge student dashboard](screenshots/student-dashboard.png) |
+
+| Opportunities | Recruiter Dashboard |
+| --- | --- |
+| ![SkillBridge opportunities page](screenshots/opportunities.png) | ![SkillBridge recruiter dashboard](screenshots/recruiter-dashboard.png) |
+
+### Mentor / Learning
+
+![SkillBridge mentor learning experience](screenshots/mentor-learning.png)
+
 ## Key features
 
 ### Student
