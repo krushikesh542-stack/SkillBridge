@@ -21,7 +21,18 @@ class ApplicationPermissionTests(APITestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.media_directory = tempfile.TemporaryDirectory()
-        cls.media_override = override_settings(MEDIA_ROOT=cls.media_directory.name)
+        cls.media_override = override_settings(
+            MEDIA_ROOT=cls.media_directory.name,
+            STORAGES={
+                "default": {
+                    "BACKEND": "django.core.files.storage.FileSystemStorage",
+                    "OPTIONS": {"location": cls.media_directory.name},
+                },
+                "staticfiles": {
+                    "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+                },
+            },
+        )
         cls.media_override.enable()
 
     @classmethod

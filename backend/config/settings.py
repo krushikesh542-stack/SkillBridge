@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # Third-party
     "rest_framework",
     "corsheaders",
+    "cloudinary_storage",
 
     # SkillBridge
     "accounts",
@@ -181,7 +182,47 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-# Production deployments must configure durable media storage separately.
+
+USE_CLOUDINARY = env_bool("DJANGO_USE_CLOUDINARY", False)
+
+if USE_CLOUDINARY:
+    cloudinary_environment_variables = (
+        "CLOUDINARY_CLOUD_NAME",
+        "CLOUDINARY_API_KEY",
+        "CLOUDINARY_API_SECRET",
+    )
+    missing_cloudinary_variables = [
+        name for name in cloudinary_environment_variables if not os.environ.get(name)
+    ]
+    if missing_cloudinary_variables:
+        raise ImproperlyConfigured(
+            "Cloudinary storage is enabled but required Cloudinary environment "
+            f"variables are missing: {', '.join(missing_cloudinary_variables)}"
+        )
+
+    CLOUDINARY_STORAGE = {
+        "CLOUD_NAME": os.environ["CLOUDINARY_CLOUD_NAME"],
+        "API_KEY": os.environ["CLOUDINARY_API_KEY"],
+        "API_SECRET": os.environ["CLOUDINARY_API_SECRET"],
+    }
+    STORAGES = {
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+else:
+    STORAGES = {
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+
 # Django only serves MEDIA_ROOT directly while DEBUG=True (see config/urls.py).
 
 
