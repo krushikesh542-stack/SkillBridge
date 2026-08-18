@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import BrandLogo from "../components/brand/BrandLogo";
 import { API_URL } from "../config/api";
 import "./Login.css";
 
 export default function Login({ onLogin }) {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const location = useLocation();
+  const [formData, setFormData] = useState({ email: location.state?.email || "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -35,5 +36,7 @@ export default function Login({ onLogin }) {
       <label htmlFor="password">Password</label><input id="password" name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Enter your password" required />
       {error && <p className="message">{error}</p>}<button type="submit" disabled={loading}>{loading ? "Signing in..." : "Sign in"}</button>
     </form>
+    {location.state?.registrationSuccess && <p className="auth-success" role="status">Account created successfully. You can now sign in.</p>}
+    <p className="auth-switch">Don&apos;t have an account? <Link to="/register">Create account</Link></p>
   </div></div>;
 }

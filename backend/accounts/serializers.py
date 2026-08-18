@@ -5,6 +5,8 @@ from .models import User
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(required=True, allow_blank=False)
+    last_name = serializers.CharField(required=True, allow_blank=False)
     password = serializers.CharField(
         write_only=True,
         validators=[validate_password],
@@ -36,6 +38,18 @@ class RegisterSerializer(serializers.ModelSerializer):
             )
 
         return data
+
+    def validate_email(self, value):
+        email = value.strip().lower()
+        if User.objects.filter(email__iexact=email).exists():
+            raise serializers.ValidationError("A user with this email already exists.")
+        return email
+
+    def validate_username(self, value):
+        username = value.strip()
+        if User.objects.filter(username__iexact=username).exists():
+            raise serializers.ValidationError("A user with this username already exists.")
+        return username
 
     def create(self, validated_data):
         validated_data.pop("confirm_password")

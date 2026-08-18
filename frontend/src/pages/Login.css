@@ -8,6 +8,9 @@
 .auth-card button { background: linear-gradient(135deg, var(--brand-taupe), var(--brand-charcoal)); box-shadow: 0 12px 25px rgba(47,45,42,.2); }
 .auth-card button:hover { box-shadow: 0 16px 32px rgba(47,45,42,.28); }
 .message { color: var(--color-danger); }
+.auth-success { margin-top: 18px; color: var(--color-success); text-align: center; font-weight: 700; }
+.auth-switch { margin-top: 20px; color: var(--brand-taupe); text-align: center; }
+.auth-switch a { color: var(--brand-charcoal); font-weight: 700; }
 
 @media (max-width: 520px) {
   .auth-brand { margin-bottom: 14px; }

@@ -14,6 +14,7 @@ import MyOpportunities from "./pages/MyOpportunities";
 import Opportunities from "./pages/Opportunities";
 import OpportunityDetails from "./pages/OpportunityDetails";
 import Profile from "./pages/Profile";
+import Register from "./pages/Register";
 import Settings from "./pages/Settings";
 import ViewApplicants from "./pages/ViewApplicants";
 
@@ -57,6 +58,7 @@ function App() {
 
   return <Routes>
     <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login onLogin={setUser} />} />
+    <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
     <Route element={<ProtectedRoute user={user} loading={loadingUser}><DashboardLayout user={user} onLogout={handleLogout} /></ProtectedRoute>}>
       <Route index element={<Navigate to="/dashboard" replace />} />
       <Route path="dashboard" element={<Dashboard user={user} />} />
