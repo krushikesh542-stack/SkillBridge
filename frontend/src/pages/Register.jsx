@@ -41,6 +41,7 @@ export default function Register() {
 
   return <div className="auth-page register-page"><div className="auth-card register-card">
     <BrandLogo variant="full" className="auth-brand" />
+    <h1>Create your SkillBridge account</h1>
     <p className="auth-subtitle">Create your account and start building meaningful connections.</p>
     <form onSubmit={handleSubmit}>
       <div className="register-grid">

@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import DashboardLayout from "./components/layout/DashboardLayout";
+import SeoMeta from "./components/SeoMeta";
 import { API_URL } from "./config/api";
 import Connections from "./pages/Connections";
 import CreateOpportunity from "./pages/CreateOpportunity";
 import Dashboard from "./pages/Dashboard";
 import EditOpportunity from "./pages/EditOpportunity";
 import Learning from "./pages/Learning";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import MyApplications from "./pages/MyApplications";
 import MyOpportunities from "./pages/MyOpportunities";
@@ -56,11 +58,11 @@ function App() {
     setUser(null);
   };
 
-  return <Routes>
+  return <><SeoMeta /><Routes>
+    <Route path="/" element={loadingUser ? <div className="app-loading">Loading SkillBridge...</div> : user ? <Navigate to="/dashboard" replace /> : <Landing />} />
     <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login onLogin={setUser} />} />
     <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
     <Route element={<ProtectedRoute user={user} loading={loadingUser}><DashboardLayout user={user} onLogout={handleLogout} /></ProtectedRoute>}>
-      <Route index element={<Navigate to="/dashboard" replace />} />
       <Route path="dashboard" element={<Dashboard user={user} />} />
       <Route path="opportunities" element={<Opportunities />} />
       <Route path="opportunities/:id/applicants" element={<RoleRoute user={user} allowedRoles={["startup"]}><ViewApplicants /></RoleRoute>} />
@@ -75,7 +77,7 @@ function App() {
       <Route path="settings" element={<Settings onLogout={handleLogout} />} />
     </Route>
     <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} replace />} />
-  </Routes>;
+  </Routes></>;
 }
 
 export default App;

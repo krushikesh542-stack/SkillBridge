@@ -30,6 +30,7 @@ export default function Login({ onLogin }) {
 
   return <div className="auth-page"><div className="auth-card">
     <BrandLogo variant="full" className="auth-brand" />
+    <h1>Sign in to SkillBridge</h1>
     <p className="auth-subtitle">Connect with opportunities, mentors, and startups.</p>
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email address</label><input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required />

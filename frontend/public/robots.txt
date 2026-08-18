@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /applications
+Disallow: /connections
+Disallow: /learning
+Disallow: /opportunities
+Disallow: /profile
+Disallow: /settings
+
+Sitemap: https://skillbridge-frontend-jkgi.onrender.com/sitemap.xml

@@ -1,0 +1,25 @@
+.landing-page { min-height: 100vh; color: var(--brand-charcoal); background: radial-gradient(circle at 15% 5%, rgba(205,183,158,.38), transparent 30%), var(--brand-cream); }
+.landing-header { width: min(1180px, calc(100% - 40px)); margin: auto; padding: 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.landing-header > a { text-decoration: none; }
+.landing-header nav, .landing-actions { display: flex; align-items: center; gap: 14px; }
+.landing-signin, .landing-secondary { color: var(--brand-charcoal); font-weight: 700; }
+.landing-button { display: inline-flex; justify-content: center; padding: 13px 20px; color: white; border-radius: 12px; background: linear-gradient(135deg, var(--brand-taupe), var(--brand-charcoal)); font-weight: 700; text-decoration: none; box-shadow: 0 12px 25px rgba(47,45,42,.18); }
+.landing-hero { width: min(900px, calc(100% - 40px)); margin: 70px auto 90px; text-align: center; }
+.landing-eyebrow { margin-bottom: 14px; color: var(--brand-sand); font-size: .82rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.landing-hero h1 { max-width: 780px; margin: auto; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.02; letter-spacing: -.055em; }
+.landing-hero > p:not(.landing-eyebrow) { max-width: 720px; margin: 24px auto 30px; color: var(--color-text-soft); font-size: 1.14rem; line-height: 1.75; }
+.landing-actions { justify-content: center; flex-wrap: wrap; }
+.landing-audiences { width: min(1180px, calc(100% - 40px)); margin: auto; padding: 70px 0; }
+.landing-section-heading { max-width: 680px; margin-bottom: 32px; }
+.landing-section-heading h2, .landing-cta h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.035em; }
+.landing-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.landing-card-grid article { padding: 30px; border: 1px solid rgba(122,110,93,.18); border-radius: 20px; background: rgba(255,255,255,.7); box-shadow: var(--shadow-md); backdrop-filter: blur(18px); }
+.landing-card-grid h3 { margin-bottom: 12px; font-size: 1.3rem; }
+.landing-card-grid p, .landing-cta p, .landing-footer p { color: var(--color-text-soft); line-height: 1.7; }
+.landing-cta { width: min(900px, calc(100% - 40px)); margin: 50px auto 90px; padding: 46px; border-radius: 26px; text-align: center; background: rgba(205,183,158,.28); }
+.landing-cta p { margin: 12px 0 24px; }
+.landing-footer { padding: 36px 20px; display: flex; align-items: center; justify-content: center; gap: 24px; border-top: 1px solid rgba(122,110,93,.16); }
+.landing-footer .skillbridge-logo--full .skillbridge-symbol { width: 42px; height: 42px; flex-basis: 42px; }
+.landing-footer .skillbridge-wordmark { font-size: 24px; }
+@media (max-width: 760px) { .landing-card-grid { grid-template-columns: 1fr; } .landing-footer { flex-direction: column; text-align: center; } }
+@media (max-width: 520px) { .landing-header { align-items: flex-start; } .landing-header .skillbridge-wordmark { display: none; } .landing-header nav { gap: 10px; } .landing-header .landing-button { padding: 11px 14px; } .landing-hero { margin-top: 45px; } .landing-actions { align-items: stretch; flex-direction: column; } .landing-cta { padding: 34px 22px; } }

@@ -332,6 +332,12 @@ This repository does not currently include a tracked Render blueprint, Dockerfil
 - Development media is served by Django only in debug mode; production media uses Cloudinary.
 - Existing local or stale media records are not uploaded to Cloudinary automatically.
 
+## Frontend SEO
+
+The production frontend is available at `https://skillbridge-frontend-jkgi.onrender.com`. Its sitemap is served at `/sitemap.xml`, and crawler guidance is served at `/robots.txt`. The landing page, login page, and registration page are the public routes intended for indexing. Authenticated dashboards, profiles, applications, connections, learning, opportunity management, and settings routes are excluded from the sitemap and receive client-side `noindex` metadata.
+
+SkillBridge is a client-rendered React/Vite application. Metadata is present in the base HTML and updated per route in the browser, but crawler support is not as consistent as server-side rendering or pre-rendering. Pre-rendering the public routes is a possible future improvement.
+
 ## Future ideas
 
 The following are potential enhancements, not current features:
